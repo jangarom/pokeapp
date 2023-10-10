@@ -1,3 +1,4 @@
 enum RouteNames {
   home,
+  pokemonPage,
 }

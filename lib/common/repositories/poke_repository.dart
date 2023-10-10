@@ -28,4 +28,24 @@ class PokeRepository extends RestService implements IPokeRepository {
       return Error(PokeException.error(error.toString()));
     }
   }
+
+  @override
+  Future<Result<Pokemon, PokeException>> getPokemon(String url) async {
+    try {
+      Response response = await getCall(
+        url,
+      );
+
+      if (response.statusCode == 200) {
+        dynamic data = RepoUtils.decodeBody(response);
+
+        Pokemon pokemon = Pokemon.fromJson(data);
+        return Success(pokemon);
+      } else {
+        return Error(PokeException.fromCode(response.statusCode));
+      }
+    } catch (error) {
+      return Error(PokeException.error(error.toString()));
+    }
+  }
 }

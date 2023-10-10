@@ -11,26 +11,24 @@ _$PokemonImpl _$$PokemonImplFromJson(Map<String, dynamic> json) =>
       abilities: (json['abilities'] as List<dynamic>)
           .map((e) => Ability.fromJson(e as Map<String, dynamic>))
           .toList(),
-      baseExperience: json['baseExperience'] as int,
+      baseExperience: json['base_experience'] as int,
       forms: (json['forms'] as List<dynamic>)
           .map((e) => Species.fromJson(e as Map<String, dynamic>))
           .toList(),
-      gameIndices: (json['gameIndices'] as List<dynamic>)
+      gameIndices: (json['game_indices'] as List<dynamic>)
           .map((e) => GameIndex.fromJson(e as Map<String, dynamic>))
           .toList(),
       height: json['height'] as int,
-      heldItems: (json['heldItems'] as List<dynamic>)
-          .map((e) => HeldItem.fromJson(e as Map<String, dynamic>))
-          .toList(),
+      heldItems: json['held_items'] as List<dynamic>,
       id: json['id'] as int,
-      isDefault: json['isDefault'] as bool,
-      locationAreaEncounters: json['locationAreaEncounters'] as String,
+      isDefault: json['is_default'] as bool,
+      locationAreaEncounters: json['location_area_encounters'] as String,
       moves: (json['moves'] as List<dynamic>)
           .map((e) => Move.fromJson(e as Map<String, dynamic>))
           .toList(),
       name: json['name'] as String,
       order: json['order'] as int,
-      pastTypes: json['pastTypes'] as List<dynamic>,
+      pastTypes: json['past_types'] as List<dynamic>,
       species: Species.fromJson(json['species'] as Map<String, dynamic>),
       sprites: Sprites.fromJson(json['sprites'] as Map<String, dynamic>),
       stats: (json['stats'] as List<dynamic>)
@@ -45,18 +43,18 @@ _$PokemonImpl _$$PokemonImplFromJson(Map<String, dynamic> json) =>
 Map<String, dynamic> _$$PokemonImplToJson(_$PokemonImpl instance) =>
     <String, dynamic>{
       'abilities': instance.abilities,
-      'baseExperience': instance.baseExperience,
+      'base_experience': instance.baseExperience,
       'forms': instance.forms,
-      'gameIndices': instance.gameIndices,
+      'game_indices': instance.gameIndices,
       'height': instance.height,
-      'heldItems': instance.heldItems,
+      'held_items': instance.heldItems,
       'id': instance.id,
-      'isDefault': instance.isDefault,
-      'locationAreaEncounters': instance.locationAreaEncounters,
+      'is_default': instance.isDefault,
+      'location_area_encounters': instance.locationAreaEncounters,
       'moves': instance.moves,
       'name': instance.name,
       'order': instance.order,
-      'pastTypes': instance.pastTypes,
+      'past_types': instance.pastTypes,
       'species': instance.species,
       'sprites': instance.sprites,
       'stats': instance.stats,
@@ -67,14 +65,14 @@ Map<String, dynamic> _$$PokemonImplToJson(_$PokemonImpl instance) =>
 _$AbilityImpl _$$AbilityImplFromJson(Map<String, dynamic> json) =>
     _$AbilityImpl(
       ability: Species.fromJson(json['ability'] as Map<String, dynamic>),
-      isHidden: json['isHidden'] as bool,
+      isHidden: json['is_hidden'] as bool,
       slot: json['slot'] as int,
     );
 
 Map<String, dynamic> _$$AbilityImplToJson(_$AbilityImpl instance) =>
     <String, dynamic>{
       'ability': instance.ability,
-      'isHidden': instance.isHidden,
+      'is_hidden': instance.isHidden,
       'slot': instance.slot,
     };
 
@@ -92,45 +90,19 @@ Map<String, dynamic> _$$SpeciesImplToJson(_$SpeciesImpl instance) =>
 
 _$GameIndexImpl _$$GameIndexImplFromJson(Map<String, dynamic> json) =>
     _$GameIndexImpl(
-      gameIndex: json['gameIndex'] as int,
+      gameIndex: json['game_index'] as int,
       version: Species.fromJson(json['version'] as Map<String, dynamic>),
     );
 
 Map<String, dynamic> _$$GameIndexImplToJson(_$GameIndexImpl instance) =>
     <String, dynamic>{
-      'gameIndex': instance.gameIndex,
-      'version': instance.version,
-    };
-
-_$HeldItemImpl _$$HeldItemImplFromJson(Map<String, dynamic> json) =>
-    _$HeldItemImpl(
-      item: Species.fromJson(json['item'] as Map<String, dynamic>),
-      versionDetails: (json['versionDetails'] as List<dynamic>)
-          .map((e) => VersionDetail.fromJson(e as Map<String, dynamic>))
-          .toList(),
-    );
-
-Map<String, dynamic> _$$HeldItemImplToJson(_$HeldItemImpl instance) =>
-    <String, dynamic>{
-      'item': instance.item,
-      'versionDetails': instance.versionDetails,
-    };
-
-_$VersionDetailImpl _$$VersionDetailImplFromJson(Map<String, dynamic> json) =>
-    _$VersionDetailImpl(
-      rarity: json['rarity'] as int,
-      version: Species.fromJson(json['version'] as Map<String, dynamic>),
-    );
-
-Map<String, dynamic> _$$VersionDetailImplToJson(_$VersionDetailImpl instance) =>
-    <String, dynamic>{
-      'rarity': instance.rarity,
+      'game_index': instance.gameIndex,
       'version': instance.version,
     };
 
 _$MoveImpl _$$MoveImplFromJson(Map<String, dynamic> json) => _$MoveImpl(
       move: Species.fromJson(json['move'] as Map<String, dynamic>),
-      versionGroupDetails: (json['versionGroupDetails'] as List<dynamic>)
+      versionGroupDetails: (json['version_group_details'] as List<dynamic>)
           .map((e) => VersionGroupDetail.fromJson(e as Map<String, dynamic>))
           .toList(),
     );
@@ -138,152 +110,174 @@ _$MoveImpl _$$MoveImplFromJson(Map<String, dynamic> json) => _$MoveImpl(
 Map<String, dynamic> _$$MoveImplToJson(_$MoveImpl instance) =>
     <String, dynamic>{
       'move': instance.move,
-      'versionGroupDetails': instance.versionGroupDetails,
+      'version_group_details': instance.versionGroupDetails,
     };
 
 _$VersionGroupDetailImpl _$$VersionGroupDetailImplFromJson(
         Map<String, dynamic> json) =>
     _$VersionGroupDetailImpl(
-      levelLearnedAt: json['levelLearnedAt'] as int,
+      levelLearnedAt: json['level_learned_at'] as int,
       moveLearnMethod:
-          Species.fromJson(json['moveLearnMethod'] as Map<String, dynamic>),
+          Species.fromJson(json['move_learn_method'] as Map<String, dynamic>),
       versionGroup:
-          Species.fromJson(json['versionGroup'] as Map<String, dynamic>),
+          Species.fromJson(json['version_group'] as Map<String, dynamic>),
     );
 
 Map<String, dynamic> _$$VersionGroupDetailImplToJson(
         _$VersionGroupDetailImpl instance) =>
     <String, dynamic>{
-      'levelLearnedAt': instance.levelLearnedAt,
-      'moveLearnMethod': instance.moveLearnMethod,
-      'versionGroup': instance.versionGroup,
+      'level_learned_at': instance.levelLearnedAt,
+      'move_learn_method': instance.moveLearnMethod,
+      'version_group': instance.versionGroup,
     };
 
-_$GenerationVImpl _$$GenerationVImplFromJson(Map<String, dynamic> json) =>
-    _$GenerationVImpl(
-      blackWhite: Sprites.fromJson(json['blackWhite'] as Map<String, dynamic>),
+_$SpritesImpl _$$SpritesImplFromJson(Map<String, dynamic> json) =>
+    _$SpritesImpl(
+      backDefault: json['back_default'] as String,
+      backFemale: json['back_female'],
+      backShiny: json['back_shiny'] as String,
+      backShinyFemale: json['back_shiny_female'],
+      frontDefault: json['front_default'] as String,
+      frontFemale: json['front_female'],
+      frontShiny: json['front_shiny'] as String,
+      frontShinyFemale: json['front_shiny_female'],
+      other: Other.fromJson(json['other'] as Map<String, dynamic>),
+      versions: Versions.fromJson(json['versions'] as Map<String, dynamic>),
     );
 
-Map<String, dynamic> _$$GenerationVImplToJson(_$GenerationVImpl instance) =>
+Map<String, dynamic> _$$SpritesImplToJson(_$SpritesImpl instance) =>
     <String, dynamic>{
-      'blackWhite': instance.blackWhite,
+      'back_default': instance.backDefault,
+      'back_female': instance.backFemale,
+      'back_shiny': instance.backShiny,
+      'back_shiny_female': instance.backShinyFemale,
+      'front_default': instance.frontDefault,
+      'front_female': instance.frontFemale,
+      'front_shiny': instance.frontShiny,
+      'front_shiny_female': instance.frontShinyFemale,
+      'other': instance.other,
+      'versions': instance.versions,
     };
 
-_$GenerationIvImpl _$$GenerationIvImplFromJson(Map<String, dynamic> json) =>
-    _$GenerationIvImpl(
-      diamondPearl:
-          Sprites.fromJson(json['diamondPearl'] as Map<String, dynamic>),
-      heartgoldSoulsilver:
-          Sprites.fromJson(json['heartgoldSoulsilver'] as Map<String, dynamic>),
-      platinum: Sprites.fromJson(json['platinum'] as Map<String, dynamic>),
+_$OtherImpl _$$OtherImplFromJson(Map<String, dynamic> json) => _$OtherImpl(
+      dreamWorld:
+          DreamWorld.fromJson(json['dream_world'] as Map<String, dynamic>),
+      home: Home.fromJson(json['home'] as Map<String, dynamic>),
+      officialArtwork: OfficialArtwork.fromJson(
+          json['official-artwork'] as Map<String, dynamic>),
     );
 
-Map<String, dynamic> _$$GenerationIvImplToJson(_$GenerationIvImpl instance) =>
+Map<String, dynamic> _$$OtherImplToJson(_$OtherImpl instance) =>
     <String, dynamic>{
-      'diamondPearl': instance.diamondPearl,
-      'heartgoldSoulsilver': instance.heartgoldSoulsilver,
-      'platinum': instance.platinum,
+      'dream_world': instance.dreamWorld,
+      'home': instance.home,
+      'official-artwork': instance.officialArtwork,
+    };
+
+_$DreamWorldImpl _$$DreamWorldImplFromJson(Map<String, dynamic> json) =>
+    _$DreamWorldImpl(
+      frontDefault: json['front_default'] as String,
+      frontFemale: json['front_female'],
+    );
+
+Map<String, dynamic> _$$DreamWorldImplToJson(_$DreamWorldImpl instance) =>
+    <String, dynamic>{
+      'front_default': instance.frontDefault,
+      'front_female': instance.frontFemale,
+    };
+
+_$HomeImpl _$$HomeImplFromJson(Map<String, dynamic> json) => _$HomeImpl(
+      frontDefault: json['front_default'] as String,
+      frontFemale: json['front_female'],
+      frontShiny: json['front_shiny'] as String,
+      frontShinyFemale: json['front_shiny_female'],
+    );
+
+Map<String, dynamic> _$$HomeImplToJson(_$HomeImpl instance) =>
+    <String, dynamic>{
+      'front_default': instance.frontDefault,
+      'front_female': instance.frontFemale,
+      'front_shiny': instance.frontShiny,
+      'front_shiny_female': instance.frontShinyFemale,
+    };
+
+_$OfficialArtworkImpl _$$OfficialArtworkImplFromJson(
+        Map<String, dynamic> json) =>
+    _$OfficialArtworkImpl(
+      frontDefault: json['front_default'] as String,
+      frontShiny: json['front_shiny'] as String,
+    );
+
+Map<String, dynamic> _$$OfficialArtworkImplToJson(
+        _$OfficialArtworkImpl instance) =>
+    <String, dynamic>{
+      'front_default': instance.frontDefault,
+      'front_shiny': instance.frontShiny,
     };
 
 _$VersionsImpl _$$VersionsImplFromJson(Map<String, dynamic> json) =>
     _$VersionsImpl(
       generationI:
-          GenerationI.fromJson(json['generationI'] as Map<String, dynamic>),
+          GenerationI.fromJson(json['generation-i'] as Map<String, dynamic>),
       generationIi:
-          GenerationIi.fromJson(json['generationIi'] as Map<String, dynamic>),
-      generationIii:
-          GenerationIii.fromJson(json['generationIii'] as Map<String, dynamic>),
+          GenerationIi.fromJson(json['generation-ii'] as Map<String, dynamic>),
+      generationIii: GenerationIii.fromJson(
+          json['generation-iii'] as Map<String, dynamic>),
       generationIv:
-          GenerationIv.fromJson(json['generationIv'] as Map<String, dynamic>),
+          GenerationIv.fromJson(json['generation-iv'] as Map<String, dynamic>),
       generationV:
-          GenerationV.fromJson(json['generationV'] as Map<String, dynamic>),
-      generationVi: (json['generationVi'] as Map<String, dynamic>).map(
+          GenerationV.fromJson(json['generation-v'] as Map<String, dynamic>),
+      generationVi: (json['generation-vi'] as Map<String, dynamic>).map(
         (k, e) => MapEntry(k, Home.fromJson(e as Map<String, dynamic>)),
       ),
-      generationVii:
-          GenerationVii.fromJson(json['generationVii'] as Map<String, dynamic>),
+      generationVii: GenerationVii.fromJson(
+          json['generation-vii'] as Map<String, dynamic>),
       generationViii: GenerationViii.fromJson(
-          json['generationViii'] as Map<String, dynamic>),
+          json['generation-viii'] as Map<String, dynamic>),
     );
 
 Map<String, dynamic> _$$VersionsImplToJson(_$VersionsImpl instance) =>
     <String, dynamic>{
-      'generationI': instance.generationI,
-      'generationIi': instance.generationIi,
-      'generationIii': instance.generationIii,
-      'generationIv': instance.generationIv,
-      'generationV': instance.generationV,
-      'generationVi': instance.generationVi,
-      'generationVii': instance.generationVii,
-      'generationViii': instance.generationViii,
-    };
-
-_$SpritesImpl _$$SpritesImplFromJson(Map<String, dynamic> json) =>
-    _$SpritesImpl(
-      backDefault: json['backDefault'] as String,
-      backFemale: json['backFemale'],
-      backShiny: json['backShiny'] as String,
-      backShinyFemale: json['backShinyFemale'],
-      frontDefault: json['frontDefault'] as String,
-      frontFemale: json['frontFemale'],
-      frontShiny: json['frontShiny'] as String,
-      frontShinyFemale: json['frontShinyFemale'],
-      other: json['other'] == null
-          ? null
-          : Other.fromJson(json['other'] as Map<String, dynamic>),
-      versions: json['versions'] == null
-          ? null
-          : Versions.fromJson(json['versions'] as Map<String, dynamic>),
-      animated: json['animated'] == null
-          ? null
-          : Sprites.fromJson(json['animated'] as Map<String, dynamic>),
-    );
-
-Map<String, dynamic> _$$SpritesImplToJson(_$SpritesImpl instance) =>
-    <String, dynamic>{
-      'backDefault': instance.backDefault,
-      'backFemale': instance.backFemale,
-      'backShiny': instance.backShiny,
-      'backShinyFemale': instance.backShinyFemale,
-      'frontDefault': instance.frontDefault,
-      'frontFemale': instance.frontFemale,
-      'frontShiny': instance.frontShiny,
-      'frontShinyFemale': instance.frontShinyFemale,
-      'other': instance.other,
-      'versions': instance.versions,
-      'animated': instance.animated,
+      'generation-i': instance.generationI,
+      'generation-ii': instance.generationIi,
+      'generation-iii': instance.generationIii,
+      'generation-iv': instance.generationIv,
+      'generation-v': instance.generationV,
+      'generation-vi': instance.generationVi,
+      'generation-vii': instance.generationVii,
+      'generation-viii': instance.generationViii,
     };
 
 _$GenerationIImpl _$$GenerationIImplFromJson(Map<String, dynamic> json) =>
     _$GenerationIImpl(
-      redBlue: RedBlue.fromJson(json['redBlue'] as Map<String, dynamic>),
+      redBlue: RedBlue.fromJson(json['red-blue'] as Map<String, dynamic>),
       yellow: RedBlue.fromJson(json['yellow'] as Map<String, dynamic>),
     );
 
 Map<String, dynamic> _$$GenerationIImplToJson(_$GenerationIImpl instance) =>
     <String, dynamic>{
-      'redBlue': instance.redBlue,
+      'red-blue': instance.redBlue,
       'yellow': instance.yellow,
     };
 
 _$RedBlueImpl _$$RedBlueImplFromJson(Map<String, dynamic> json) =>
     _$RedBlueImpl(
-      backDefault: json['backDefault'] as String,
-      backGray: json['backGray'] as String,
-      backTransparent: json['backTransparent'] as String,
-      frontDefault: json['frontDefault'] as String,
-      frontGray: json['frontGray'] as String,
-      frontTransparent: json['frontTransparent'] as String,
+      backDefault: json['back_default'] as String,
+      backGray: json['back_gray'] as String,
+      backTransparent: json['back_transparent'] as String,
+      frontDefault: json['front_default'] as String,
+      frontGray: json['front_gray'] as String,
+      frontTransparent: json['front_transparent'] as String,
     );
 
 Map<String, dynamic> _$$RedBlueImplToJson(_$RedBlueImpl instance) =>
     <String, dynamic>{
-      'backDefault': instance.backDefault,
-      'backGray': instance.backGray,
-      'backTransparent': instance.backTransparent,
-      'frontDefault': instance.frontDefault,
-      'frontGray': instance.frontGray,
-      'frontTransparent': instance.frontTransparent,
+      'back_default': instance.backDefault,
+      'back_gray': instance.backGray,
+      'back_transparent': instance.backTransparent,
+      'front_default': instance.frontDefault,
+      'front_gray': instance.frontGray,
+      'front_transparent': instance.frontTransparent,
     };
 
 _$GenerationIiImpl _$$GenerationIiImplFromJson(Map<String, dynamic> json) =>
@@ -302,118 +296,208 @@ Map<String, dynamic> _$$GenerationIiImplToJson(_$GenerationIiImpl instance) =>
 
 _$CrystalImpl _$$CrystalImplFromJson(Map<String, dynamic> json) =>
     _$CrystalImpl(
-      backDefault: json['backDefault'] as String,
-      backShiny: json['backShiny'] as String,
-      backShinyTransparent: json['backShinyTransparent'] as String,
-      backTransparent: json['backTransparent'] as String,
-      frontDefault: json['frontDefault'] as String,
-      frontShiny: json['frontShiny'] as String,
-      frontShinyTransparent: json['frontShinyTransparent'] as String,
-      frontTransparent: json['frontTransparent'] as String,
+      backDefault: json['back_default'] as String,
+      backShiny: json['back_shiny'] as String,
+      backShinyTransparent: json['back_shiny_transparent'] as String,
+      backTransparent: json['back_transparent'] as String,
+      frontDefault: json['front_default'] as String,
+      frontShiny: json['front_shiny'] as String,
+      frontShinyTransparent: json['front_shiny_transparent'] as String,
+      frontTransparent: json['front_transparent'] as String,
     );
 
 Map<String, dynamic> _$$CrystalImplToJson(_$CrystalImpl instance) =>
     <String, dynamic>{
-      'backDefault': instance.backDefault,
-      'backShiny': instance.backShiny,
-      'backShinyTransparent': instance.backShinyTransparent,
-      'backTransparent': instance.backTransparent,
-      'frontDefault': instance.frontDefault,
-      'frontShiny': instance.frontShiny,
-      'frontShinyTransparent': instance.frontShinyTransparent,
-      'frontTransparent': instance.frontTransparent,
+      'back_default': instance.backDefault,
+      'back_shiny': instance.backShiny,
+      'back_shiny_transparent': instance.backShinyTransparent,
+      'back_transparent': instance.backTransparent,
+      'front_default': instance.frontDefault,
+      'front_shiny': instance.frontShiny,
+      'front_shiny_transparent': instance.frontShinyTransparent,
+      'front_transparent': instance.frontTransparent,
     };
 
 _$GoldImpl _$$GoldImplFromJson(Map<String, dynamic> json) => _$GoldImpl(
-      backDefault: json['backDefault'] as String,
-      backShiny: json['backShiny'] as String,
-      frontDefault: json['frontDefault'] as String,
-      frontShiny: json['frontShiny'] as String,
-      frontTransparent: json['frontTransparent'] as String?,
+      backDefault: json['back_default'] as String,
+      backShiny: json['back_shiny'] as String,
+      frontDefault: json['front_default'] as String,
+      frontShiny: json['front_shiny'] as String,
+      frontTransparent: json['front_transparent'] as String,
     );
 
 Map<String, dynamic> _$$GoldImplToJson(_$GoldImpl instance) =>
     <String, dynamic>{
-      'backDefault': instance.backDefault,
-      'backShiny': instance.backShiny,
-      'frontDefault': instance.frontDefault,
-      'frontShiny': instance.frontShiny,
-      'frontTransparent': instance.frontTransparent,
+      'back_default': instance.backDefault,
+      'back_shiny': instance.backShiny,
+      'front_default': instance.frontDefault,
+      'front_shiny': instance.frontShiny,
+      'front_transparent': instance.frontTransparent,
     };
 
 _$GenerationIiiImpl _$$GenerationIiiImplFromJson(Map<String, dynamic> json) =>
     _$GenerationIiiImpl(
       emerald:
           OfficialArtwork.fromJson(json['emerald'] as Map<String, dynamic>),
-      fireredLeafgreen:
-          Gold.fromJson(json['fireredLeafgreen'] as Map<String, dynamic>),
-      rubySapphire: Gold.fromJson(json['rubySapphire'] as Map<String, dynamic>),
+      fireredLeafgreen: FireredLeafgreen.fromJson(
+          json['firered-leafgreen'] as Map<String, dynamic>),
+      rubySapphire: FireredLeafgreen.fromJson(
+          json['ruby-sapphire'] as Map<String, dynamic>),
     );
 
 Map<String, dynamic> _$$GenerationIiiImplToJson(_$GenerationIiiImpl instance) =>
     <String, dynamic>{
       'emerald': instance.emerald,
-      'fireredLeafgreen': instance.fireredLeafgreen,
-      'rubySapphire': instance.rubySapphire,
+      'firered-leafgreen': instance.fireredLeafgreen,
+      'ruby-sapphire': instance.rubySapphire,
     };
 
-_$OfficialArtworkImpl _$$OfficialArtworkImplFromJson(
+_$FireredLeafgreenImpl _$$FireredLeafgreenImplFromJson(
         Map<String, dynamic> json) =>
-    _$OfficialArtworkImpl(
-      frontDefault: json['frontDefault'] as String,
-      frontShiny: json['frontShiny'] as String,
+    _$FireredLeafgreenImpl(
+      backDefault: json['back_default'] as String,
+      backShiny: json['back_shiny'] as String,
+      frontDefault: json['front_default'] as String,
+      frontShiny: json['front_shiny'] as String,
     );
 
-Map<String, dynamic> _$$OfficialArtworkImplToJson(
-        _$OfficialArtworkImpl instance) =>
+Map<String, dynamic> _$$FireredLeafgreenImplToJson(
+        _$FireredLeafgreenImpl instance) =>
     <String, dynamic>{
-      'frontDefault': instance.frontDefault,
-      'frontShiny': instance.frontShiny,
+      'back_default': instance.backDefault,
+      'back_shiny': instance.backShiny,
+      'front_default': instance.frontDefault,
+      'front_shiny': instance.frontShiny,
     };
 
-_$HomeImpl _$$HomeImplFromJson(Map<String, dynamic> json) => _$HomeImpl(
-      frontDefault: json['frontDefault'] as String,
-      frontFemale: json['frontFemale'],
-      frontShiny: json['frontShiny'] as String,
-      frontShinyFemale: json['frontShinyFemale'],
+_$GenerationIvImpl _$$GenerationIvImplFromJson(Map<String, dynamic> json) =>
+    _$GenerationIvImpl(
+      diamondPearl:
+          DiamondPearl.fromJson(json['diamond-pearl'] as Map<String, dynamic>),
+      heartgoldSoulsilver: DiamondPearl.fromJson(
+          json['heartgold-soulsilver'] as Map<String, dynamic>),
+      platinum: DiamondPearl.fromJson(json['platinum'] as Map<String, dynamic>),
     );
 
-Map<String, dynamic> _$$HomeImplToJson(_$HomeImpl instance) =>
+Map<String, dynamic> _$$GenerationIvImplToJson(_$GenerationIvImpl instance) =>
     <String, dynamic>{
-      'frontDefault': instance.frontDefault,
-      'frontFemale': instance.frontFemale,
-      'frontShiny': instance.frontShiny,
-      'frontShinyFemale': instance.frontShinyFemale,
+      'diamond-pearl': instance.diamondPearl,
+      'heartgold-soulsilver': instance.heartgoldSoulsilver,
+      'platinum': instance.platinum,
+    };
+
+_$DiamondPearlImpl _$$DiamondPearlImplFromJson(Map<String, dynamic> json) =>
+    _$DiamondPearlImpl(
+      backDefault: json['back_default'] as String,
+      backFemale: json['back_female'],
+      backShiny: json['back_shiny'] as String,
+      backShinyFemale: json['back_shiny_female'],
+      frontDefault: json['front_default'] as String,
+      frontFemale: json['front_female'],
+      frontShiny: json['front_shiny'] as String,
+      frontShinyFemale: json['front_shiny_female'],
+    );
+
+Map<String, dynamic> _$$DiamondPearlImplToJson(_$DiamondPearlImpl instance) =>
+    <String, dynamic>{
+      'back_default': instance.backDefault,
+      'back_female': instance.backFemale,
+      'back_shiny': instance.backShiny,
+      'back_shiny_female': instance.backShinyFemale,
+      'front_default': instance.frontDefault,
+      'front_female': instance.frontFemale,
+      'front_shiny': instance.frontShiny,
+      'front_shiny_female': instance.frontShinyFemale,
+    };
+
+_$GenerationVImpl _$$GenerationVImplFromJson(Map<String, dynamic> json) =>
+    _$GenerationVImpl(
+      blackWhite:
+          BlackWhite.fromJson(json['black-white'] as Map<String, dynamic>),
+    );
+
+Map<String, dynamic> _$$GenerationVImplToJson(_$GenerationVImpl instance) =>
+    <String, dynamic>{
+      'black-white': instance.blackWhite,
+    };
+
+_$BlackWhiteImpl _$$BlackWhiteImplFromJson(Map<String, dynamic> json) =>
+    _$BlackWhiteImpl(
+      animated: Animated.fromJson(json['animated'] as Map<String, dynamic>),
+      backDefault: json['back_default'] as String,
+      backFemale: json['back_female'],
+      backShiny: json['back_shiny'] as String,
+      backShinyFemale: json['back_shiny_female'],
+      frontDefault: json['front_default'] as String,
+      frontFemale: json['front_female'],
+      frontShiny: json['front_shiny'] as String,
+      frontShinyFemale: json['front_shiny_female'],
+    );
+
+Map<String, dynamic> _$$BlackWhiteImplToJson(_$BlackWhiteImpl instance) =>
+    <String, dynamic>{
+      'animated': instance.animated,
+      'back_default': instance.backDefault,
+      'back_female': instance.backFemale,
+      'back_shiny': instance.backShiny,
+      'back_shiny_female': instance.backShinyFemale,
+      'front_default': instance.frontDefault,
+      'front_female': instance.frontFemale,
+      'front_shiny': instance.frontShiny,
+      'front_shiny_female': instance.frontShinyFemale,
+    };
+
+_$AnimatedImpl _$$AnimatedImplFromJson(Map<String, dynamic> json) =>
+    _$AnimatedImpl(
+      backDefault: json['back_default'] as String,
+      backFemale: json['back_female'],
+      backShiny: json['back_shiny'] as String,
+      backShinyFemale: json['back_shiny_female'],
+      frontDefault: json['front_default'] as String,
+      frontFemale: json['front_female'],
+      frontShiny: json['front_shiny'] as String,
+      frontShinyFemale: json['front_shiny_female'],
+    );
+
+Map<String, dynamic> _$$AnimatedImplToJson(_$AnimatedImpl instance) =>
+    <String, dynamic>{
+      'back_default': instance.backDefault,
+      'back_female': instance.backFemale,
+      'back_shiny': instance.backShiny,
+      'back_shiny_female': instance.backShinyFemale,
+      'front_default': instance.frontDefault,
+      'front_female': instance.frontFemale,
+      'front_shiny': instance.frontShiny,
+      'front_shiny_female': instance.frontShinyFemale,
     };
 
 _$GenerationViiImpl _$$GenerationViiImplFromJson(Map<String, dynamic> json) =>
     _$GenerationViiImpl(
-      icons: DreamWorld.fromJson(json['icons'] as Map<String, dynamic>),
+      icons: Icons.fromJson(json['icons'] as Map<String, dynamic>),
       ultraSunUltraMoon:
-          Home.fromJson(json['ultraSunUltraMoon'] as Map<String, dynamic>),
+          Home.fromJson(json['ultra-sun-ultra-moon'] as Map<String, dynamic>),
     );
 
 Map<String, dynamic> _$$GenerationViiImplToJson(_$GenerationViiImpl instance) =>
     <String, dynamic>{
       'icons': instance.icons,
-      'ultraSunUltraMoon': instance.ultraSunUltraMoon,
+      'ultra-sun-ultra-moon': instance.ultraSunUltraMoon,
     };
 
-_$DreamWorldImpl _$$DreamWorldImplFromJson(Map<String, dynamic> json) =>
-    _$DreamWorldImpl(
-      frontDefault: json['frontDefault'] as String,
-      frontFemale: json['frontFemale'],
+_$IconsImpl _$$IconsImplFromJson(Map<String, dynamic> json) => _$IconsImpl(
+      frontDefault: json['front_default'] as String,
+      frontFemale: json['front_female'],
     );
 
-Map<String, dynamic> _$$DreamWorldImplToJson(_$DreamWorldImpl instance) =>
+Map<String, dynamic> _$$IconsImplToJson(_$IconsImpl instance) =>
     <String, dynamic>{
-      'frontDefault': instance.frontDefault,
-      'frontFemale': instance.frontFemale,
+      'front_default': instance.frontDefault,
+      'front_female': instance.frontFemale,
     };
 
 _$GenerationViiiImpl _$$GenerationViiiImplFromJson(Map<String, dynamic> json) =>
     _$GenerationViiiImpl(
-      icons: DreamWorld.fromJson(json['icons'] as Map<String, dynamic>),
+      icons: Icons.fromJson(json['icons'] as Map<String, dynamic>),
     );
 
 Map<String, dynamic> _$$GenerationViiiImplToJson(
@@ -422,30 +506,15 @@ Map<String, dynamic> _$$GenerationViiiImplToJson(
       'icons': instance.icons,
     };
 
-_$OtherImpl _$$OtherImplFromJson(Map<String, dynamic> json) => _$OtherImpl(
-      dreamWorld:
-          DreamWorld.fromJson(json['dreamWorld'] as Map<String, dynamic>),
-      home: Home.fromJson(json['home'] as Map<String, dynamic>),
-      officialArtwork: OfficialArtwork.fromJson(
-          json['officialArtwork'] as Map<String, dynamic>),
-    );
-
-Map<String, dynamic> _$$OtherImplToJson(_$OtherImpl instance) =>
-    <String, dynamic>{
-      'dreamWorld': instance.dreamWorld,
-      'home': instance.home,
-      'officialArtwork': instance.officialArtwork,
-    };
-
 _$StatImpl _$$StatImplFromJson(Map<String, dynamic> json) => _$StatImpl(
-      baseStat: json['baseStat'] as int,
+      baseStat: json['base_stat'] as int,
       effort: json['effort'] as int,
       stat: Species.fromJson(json['stat'] as Map<String, dynamic>),
     );
 
 Map<String, dynamic> _$$StatImplToJson(_$StatImpl instance) =>
     <String, dynamic>{
-      'baseStat': instance.baseStat,
+      'base_stat': instance.baseStat,
       'effort': instance.effort,
       'stat': instance.stat,
     };
